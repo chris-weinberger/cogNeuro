@@ -1,9 +1,33 @@
 import random
 import copy
+import math
 
 # This script will read in a csv file of intermediate vectors for a neural net
 # It will then generate two specific exemplars by randomly 'flipping' units in the vector
 # Finally, save these new vectors to a file called 'specific_exemplars.csv'
+
+def pearsonCorrelation(xVector, yVector):
+    xAv = sum(xVector) / len(xVector)
+    yAv = sum(yVector) / len(yVector)
+
+    numerator = 0
+    xDistance = 0
+    yDistance = 0
+
+    for index in range(len(xVector)):
+        xDiff = xVector[index] - xAv
+        yDiff = yVector[index] - yAv
+
+        product = xDiff * yDiff
+        numerator += product
+
+        #denominator stuff
+        xDistance += (xDiff * xDiff)
+        yDistance += (yDiff * yDiff)
+    
+    denominator = math.sqrt(xDistance * yDistance)
+    r = numerator / denominator
+    return r
 
 # Takes in one vector, returns two vectors--each with different units flipped
 def randomize(input_vector):
@@ -11,7 +35,7 @@ def randomize(input_vector):
 
     unit2 = random.randint(0, 31)
     while (unit2 == unit1):
-        unit2 = random.randint(0, 32)
+        unit2 = random.randint(0, 31)
     
     unit3 = random.randint(0, 31)
     while (unit3 == unit1 or unit3 == unit2):
@@ -53,6 +77,7 @@ def randomize(input_vector):
 def generate_exemplars(file_handle):
 
     write_out = open('specific exemplars.csv', 'w')
+    # write_out = open('test.csv', 'w')
 
     lines = file_handle.readlines()
     i = 1
@@ -64,7 +89,17 @@ def generate_exemplars(file_handle):
             line_data[k] = int(line_data[k])
         
         print(line_data)
-        exemplar1, exemplar2 = randomize(line_data)
+
+        line_sum = sum(line_data)
+        if(line_sum != 32):
+            exemplar1, exemplar2 = randomize(line_data)
+            r = pearsonCorrelation(exemplar1, exemplar2)
+            while (r != 0.75):
+                exemplar1, exemplar2 = randomize(line_data)
+                r = pearsonCorrelation(exemplar1, exemplar2)
+        else:
+            exemplar1, exemplar2 = randomize(line_data)
+
 
         print_str_a = str(i) + 'a'
         print_str_b = str(i) + 'b'
