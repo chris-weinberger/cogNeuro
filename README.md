@@ -2,7 +2,7 @@
 
 This repo was created by Christopher Weinberger for computational neuroscience research directed by Dr. Chad Marsolek, at the University of Minnesota-Twin Cities.
 
-The files contained in this repository can be broken down into three categories:
+The files contained in this repository can be broken down into code and data:
 1) Code
 generate_input_vectors.py
 The code here is written to generate vectors. The nature of the vectors generated is as follows: the code will generate n vectors, each with n units. 
@@ -16,6 +16,10 @@ creates a text file containing random pairs of numbers between 0 and n. For exam
 
 generate_specific_exemplars.py
 This code will open a file of n input vectors, and for each vector in the file, it will generate two new vectors. The new vectors will be exactly the same as the old vectors except that
-two of the units in these vectors are "flipped" (ones become zeroes and vice versa), such that thes new vectors have a Pearson Correlation of 0.75. It will then save these 2n new vectors into a file called "specific exemplars.csv".
-	2) Data files
-	3) Miscellaneous
+two of the units in these vectors are "flipped" (ones become zeroes and vice versa), such that thes new vectors have a Pearson Correlation of 0.75. It will then save these 2n new vectors 
+into a file called "specific exemplars.csv".
+
+2) Data files
+Most of these are self-explanatory, but to make things clear, I've used to following convention when naming things: If the name has the word "old" in it, it just refers to vectors that 
+contain -1 instead of 0. These were previously used. "excel" and "csv" simply refer to the file type. 
+
