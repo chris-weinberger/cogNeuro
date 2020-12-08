@@ -4,6 +4,7 @@ This repo was created by Christopher Weinberger for computational neuroscience r
 
 The files contained in this repository can be broken down into code and data:
 1) Code
+
 generate_input_vectors.py
 The code here is written to generate vectors. The nature of the vectors generated is as follows: the code will generate n vectors, each with n units. 
 All the vectors are mutually orthogonal to each other with respect to the Pearson Correlation, and n-1 of the vectors have (n/2) units "on" and (n/2) units "off" (on = 1, off = 0).
@@ -20,6 +21,7 @@ two of the units in these vectors are "flipped" (ones become zeroes and vice ver
 into a file called "specific exemplars.csv".
 
 2) Data files
+
 Most of these are self-explanatory, but to make things clear, I've used to following convention when naming things: If the name has the word "old" in it, it just refers to vectors that 
 contain -1 instead of 0. These were previously used. "excel" and "csv" simply refer to the file type. 
 
