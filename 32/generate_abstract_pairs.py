@@ -21,8 +21,8 @@ def generate_pairings(n):
     return pairs
 
 if __name__ == '__main__':
-    f = open('abstract_pairings.txt', 'w')
-    pairs = generate_pairings(32)
+    f = open('abstract_pairings_16.txt', 'w')
+    pairs = generate_pairings(16)
     f.write(str(pairs))
     f.close()
     print(pairs)
