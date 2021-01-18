@@ -28,3 +28,5 @@ into a file called "specific exemplars.csv".
 Most of these are self-explanatory, but to make things clear, I've used to following convention when naming things: If the name has the word "old" in it, it just refers to vectors that 
 contain -1 instead of 0. These were previously used. "excel" and "csv" simply refer to the file type. 
 
+
+the 'fann' directory contains the FANN library. I did not develop this library. More information about this can be found here: http://leenissen.dk/fann/wp/help/getting-started/. 
